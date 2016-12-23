@@ -60,7 +60,14 @@ function handleFull() {
     fullscreen = false;
   }
   if (fullscreen) {
-    player.classList.add('full__screen');
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    }
+  //  player.classList.add('full__screen');
   // player.style.position = 'fixed';
   // player.style.right = '0';
   // player.style.bottom = '0';
@@ -69,7 +76,7 @@ function handleFull() {
   // player.style.width = 'auto';
   // player.style.height = 'auto';
 } else {
-  player.classList.remove('full__screen');
+  //player.classList.remove('full__screen');
   // player.style.position = '';
   // player.style.right = '';
   // player.style.bottom = '';
